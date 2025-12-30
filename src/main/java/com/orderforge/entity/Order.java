@@ -1,9 +1,11 @@
 package com.orderforge.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Data
 @Entity
 @Table(name = "orders", schema = "orderforge")
 public class Order {
@@ -23,6 +25,4 @@ public class Order {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
-    // getters and setters
 }
