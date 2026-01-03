@@ -43,6 +43,11 @@ public class OrderService {
         order = orderRepository.save(order);
 
         for (CreateOrderRequest.OrderItem i : request.items) {
+
+         //   if ("Book".equals(i.productName)) {
+           //     throw new RuntimeException("Simulated failure during order creation");
+            //}
+
             OrderItem oi = new OrderItem();
             oi.setOrder(order);
             oi.setProductName(i.productName);
