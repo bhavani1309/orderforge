@@ -18,4 +18,11 @@ public class StressController {
         stressService.startCpuStress();
         return "CPU stress started";
     }
+
+    @PostMapping("/memory")
+    public String stressMemory() {
+        stressService.startMemoryStress();
+        return "Memory stress started";
+}
+
 }
