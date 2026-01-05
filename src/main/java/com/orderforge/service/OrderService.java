@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-
+import java.util.List;
 @Service
 public class OrderService {
 
@@ -34,6 +34,12 @@ public class OrderService {
         order.setStatus("CREATED");
 
         BigDecimal total = BigDecimal.ZERO;
+        try {
+            Thread.sleep(300);
+        }catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
 
         for (CreateOrderRequest.OrderItem i : request.items) {
             total = total.add(i.price.multiply(BigDecimal.valueOf(i.quantity)));
@@ -58,4 +64,10 @@ public class OrderService {
 
         return order.getId();
     }
+    
+
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
+
 }
